@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title is set in the white matter of each page -->
+    <title>{{ title }}</title>
+    <!-- Included for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="assets/css/app.css">
+        <script src="assets/js/app.js"></script>
+  </head>
+    <body>
+        <header class="container-fluid p-0 m-0">
+            {{> external-header type="external"}}
+        </header>
+        <nav class="container-fluid p-0 m-0">
+            {{> external-main-nav type="external"}}
+        </nav>
+        <div class="container-fluid p-0 m-0">
+            <div class="row">
+                <div class="col-12 breadcrumbs">
+                    <!-- {> breadcrumbs type="external"}} -->
+                </div>
+            </div>
+        </div>
+        <main class="container-fluid p-0 m-0">
+            <div class="row">
+                <div class="col-12 main-section p-5">
+                    {{> body type="external"}}
+                </div>
+            </div>
+        </main>
+        <footer class="container-fluid p-0 m-0">
+            <div class="row">
+                <div class="col-12 footer-section">
+                    <!-- {> external-footer type="external"}} -->
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

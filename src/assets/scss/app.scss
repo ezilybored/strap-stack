@@ -1,0 +1,22 @@
+// SCSS for the external template
+
+
+
+//Global SCSS files
+@import 'global/mixins';
+
+
+// SVG files
+@import 'global/svgs';
+@import 'global/icons-external';
+
+// Specific SCSS files
+@import 'top-nav';
+@import 'main-nav';
+
+
+//Bootstrap variable overrides need to come before the Bootstrap files in the majin SCSS filet
+// SCSS relating to bootstrap. This needs to come last in the SCSS file.
+@import "node_modules/bootstrap/scss/bootstrap";
+@import 'global/reset';
+@import 'typography';

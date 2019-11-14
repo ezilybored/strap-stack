@@ -1,0 +1,43 @@
+.main-nav {
+    max-width: 80rem;
+    height: auto;
+    margin: 0 auto;
+    ul {
+        line-height: 1.2;
+        li {
+            a {
+                font-size: 1em;
+                color: #003035;
+
+                &:hover {
+                        color: #00afaa;
+                    }
+            }
+        }
+    }
+}
+
+.outer-nav {
+    border-bottom: solid 0.2em #00afaa;
+}
+
+
+.nav-tabs {
+    border-bottom: none 0 !important;
+}
+.nav-link {
+    &:hover {
+        border-color: #00afaa !important;
+        border-bottom: none !important;
+    }
+    &:focus{
+        border-color: #00afaa !important;
+        border-bottom: none !important;
+    }
+}
+
+.dropdown-menu {
+    margin-top: 0.1em !important;
+    border-color: #00afaa !important;
+    width: 100vw;
+}

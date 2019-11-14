@@ -1,0 +1,68 @@
+.main-nav {
+    max-width: 80rem;
+    height: auto;
+    margin: 0 auto;
+
+    a {
+        font-size: 1em;
+        color: #003035;
+    }
+
+    ul {
+        line-height: 1.2;
+        li {
+            a {
+                font-size: 1em;
+                color: #003035;
+
+                &:hover {
+                        color: #00afaa;
+                    }
+            }
+        }
+    }
+}
+
+
+
+/*
+.nav-tabs {
+    //border-bottom: none 0 !important;
+}
+.nav-link {
+    &:hover {
+        border-color: #00afaa !important;
+        border-bottom: #00afaa;
+    }
+    &:focus{
+        border-color: #00afaa !important;
+        border-bottom: #00afaa;
+    }
+    &:active {
+        border-bottom: 0.01em #fff !important;
+    }
+}
+
+
+.dropdown-menu {
+    //margin-top: 0.01em;
+    //border-color: #00afaa !important;
+    //border: none !important;
+}
+*/
+.dropdown {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    h2 {
+        font-size: 1em;
+        color: #003035;
+    }
+}
+
+.dropdown-menu {
+    //margin-top: 0 !important;
+    border: none !important;
+}
+

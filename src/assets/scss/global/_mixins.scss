@@ -1,0 +1,41 @@
+// Box style mixins
+@mixin top-border($top-border-thickness, $top-border-colour) {
+    border-top: solid $top-border-thickness $top-border-colour;
+}
+
+// Text style mixins
+@mixin section-text($text-colour, $font-size, $link-colour) {
+    color: $text-colour;
+    font-size: $font-size;
+
+    a {
+        color: $link-colour;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Icon style mixins
+@mixin footer-icon-style($height, $width){
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: $height;
+    width: $width; 
+}
+
+//Padding and margins
+@mixin padding($top, $right, $bottom, $left){
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+    padding-left: $left;
+}
+
+@mixin margin($top, $right, $bottom, $left){
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+    margin-left: $left;
+}
