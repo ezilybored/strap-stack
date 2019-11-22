@@ -1,68 +1,169 @@
-.main-nav {
+.outer-nav {
+    background-color: white;
+    width: 100vw;
+    height: 3em;
+    border-bottom: solid 3px #00afaa;
+
+    .main-nav {
     max-width: 80rem;
-    height: auto;
+    height: 3em;
     margin: 0 auto;
+    background-color: white;
+    border-bottom: solid 3px #00afaa;
 
-    a {
-        font-size: 1em;
-        color: #003035;
-    }
+    .drop-down-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        flex: 1 1 auto;
+        text-align: center;
 
-    ul {
-        line-height: 1.2;
-        li {
-            a {
-                font-size: 1em;
-                color: #003035;
+        a {
+            color: #003035;
 
-                &:hover {
+            &:hover,
+            &:focus {
                         color: #00afaa;
-                    }
+                        text-decoration: none !important;
             }
         }
+
+        h2 {
+            display: block;
+            text-align: center;
+            padding: 0.5em;
+            margin: 0;
+            font-size: 1em;
+        }
+
+        &:hover,
+        &:focus {
+            color: #00afaa;
+            border: solid 3px #00afaa;
+            //transition: border 450ms ease-in-out;
+            border-bottom: solid 3px white;
+            margin: -3px;
+        }
+
+        .drop-down-box {
+            visibility: hidden;
+            position: absolute;
+            top: 14.85em;
+            right: 0;
+            bottom: null;
+            left: 0;
+            width: 100vw;
+            height: auto;
+            opacity: 0;
+            display: block;
+            background: white;
+            z-index: 3;
+            //transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out;
+            //-moz-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Firefox 4 */
+            //-webkit-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Safari and Chrome */
+            //-o-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Opera */
+            //-ms-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Explorer 10 */
+
+            &.active-nav {
+                opacity: 1;
+                //height: auto;
+                visibility: visible;
+            }
+
+            &.opacity-nav {
+                opacity: 1;
+                //height: auto;
+                visibility: visible;
+                transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out;
+                -moz-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Firefox 4 */
+                -webkit-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Safari and Chrome */
+                -o-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Opera */
+                -ms-transition: opacity 500ms ease-in-out, visibility 500ms ease-in-out; /* Explorer 10 */
+            }
+
+            .drop-down-content {
+                max-width: 80rem;
+                margin: 0 auto;
+                height: inherit;
+
+                section {
+                    height: inherit;
+                    h2 {
+                        display: block;
+                        text-align: left;
+                        padding: 3em 0em 1em 0em;
+                        margin: 0;
+                        font-size: 1em;
+                        color: #00afaa;
+                    }
+
+                    ul {
+                        padding-inline-start: 0px;
+                        li {
+                                display: block;
+                                text-align: left;
+                                padding: 0em 0em 0.8em 0em;
+                                margin: 0;
+                                font-size: 1em;
+                                
+                                a {
+                                    color: #003035;
+
+                                    &:hover {
+                                    //color: #00afaa;
+                                    text-decoration: underline !important;
+                                    }
+                                }                
+                            }
+                        }
+                    }
+                }
+            }
+        }   
     }
 }
 
+.dark-background {
+    margin-top: 15em;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 750ms ease-in-out;
+    -moz-transition: opacity 750ms ease-in-out; /* Firefox 4 */
+    -webkit-transition: opacity 750ms ease-in-out; /* Safari and Chrome */
+    -o-transition: opacity 750ms ease-in-out; /* Opera */
+    -ms-transition: opacity 750ms ease-in-out; /* Explorer 10 */
 
-
-/*
-.nav-tabs {
-    //border-bottom: none 0 !important;
+    &.fade-in {
+        opacity: 0.6;
+        //height: 100vh;
+        transition: opacity 750ms ease-in-out;
+        -moz-transition: opacity 750ms ease-in-out; /* Firefox 4 */
+        -webkit-transition: opacity 750ms ease-in-out; /* Safari and Chrome */
+        -o-transition: opacity 750ms ease-in-out; /* Opera */
+        -ms-transition: opacity 750ms ease-in-out; /* Explorer 10 */
+        }
 }
-.nav-link {
-    &:hover {
-        border-color: #00afaa !important;
-        border-bottom: #00afaa;
-    }
+
+.show-on-focus {
+    opacity: 0;
+
     &:focus{
-        border-color: #00afaa !important;
-        border-bottom: #00afaa;
-    }
-    &:active {
-        border-bottom: 0.01em #fff !important;
+        opacity: 1;
     }
 }
 
 
-.dropdown-menu {
-    //margin-top: 0.01em;
-    //border-color: #00afaa !important;
-    //border: none !important;
-}
-*/
-.dropdown {
-    max-width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
 
-    h2 {
-        font-size: 1em;
-        color: #003035;
-    }
-}
 
-.dropdown-menu {
-    //margin-top: 0 !important;
-    border: none !important;
-}
+
+
 

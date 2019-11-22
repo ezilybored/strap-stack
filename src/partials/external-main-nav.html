@@ -1,129 +1,343 @@
-<div class="justify-content-center p-0 m-0 outer-nav">
-    <ul class="nav nav-tabs nav-fill d-none d-xl-flex main-nav">
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                    aria-expanded="false">STUDY WITH US</a>
-            <div class="dropdown-menu">
-                <div class="row dropdown-item">
-                    <div class="col-12">
-                        <section>
-                            <h2>Undergraduate study</h2>
-                            <ul>
-                                <li><a href="/study/undergraduate/2017">2017 courses</a></li>
-                                <li><a href="/study/undergraduate/2016">2016 courses</a></li>
-                                <li><a href="/study/undergraduate/fees-and-scholarships">Fees and scholarships</a></li>
-                                <li><a href="/study/undergraduate/apply">How to apply</a></li>
-                                <li><a href="/study/register/ug">Register your interest</a></li>
-                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h2>Foundation years</a>
-                            <ul>
-                                <li><a href="/study/foundation/2017">2017 entry</a></li>
-                                <li><a href="/study/foundation/2016">2016 entry</a></li>
-                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
-                            </ul>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item dropdown main-nav">
-            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">STUDY
-                WITH US</a>
-            <div class="dropdown-menu w-100">
-                <div class="row dropdown-item">
-                    <div class="col-12">
-                        <section>
-                            <h2>Undergraduate study</h2>
-                            <ul>
-                                <li><a href="/study/undergraduate/2017">2017 courses</a></li>
-                                <li><a href="/study/undergraduate/2016">2016 courses</a></li>
-                                <li><a href="/study/undergraduate/fees-and-scholarships">Fees and scholarships</a></li>
-                                <li><a href="/study/undergraduate/apply">How to apply</a></li>
-                                <li><a href="/study/register/ug">Register your interest</a></li>
-                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h2>Foundation years</a>
-                                <ul>
-                                    <li><a href="/study/foundation/2017">2017 entry</a></li>
-                                    <li><a href="/study/foundation/2016">2016 entry</a></li>
-                                    <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
-                                </ul>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
+<script id="nav-toggle">
+    document.addEventListener("DOMContentLoaded", () => {
+        var open = false;
+        var dropButton = document.getElementsByClassName("drop-down-click");
+        var dropBox = document.getElementsByClassName("drop-down-box");
+        var fadedBg = document.getElementsByClassName("dark-background");
 
-<!-- 
-<div class="main-nav">
-    <ul class="nav nav-tabs nav-fill">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+        for (var i = 0; i < dropButton.length; i++) {
+            dropButton[i].addEventListener('click', dropToggle);
+            //dropButton[i].addEventListener('keyup', dropToggle(event));
+        }
+        fadedBg[0].addEventListener('mouseenter', toggleOff);
+
+        function dropToggle(event) {
+            console.log(event)
+            //Loop through all drop-down-box and remove active-nav class
+            var i;
+            var mainElement = document.getElementsByClassName("dark-background");
+            var node = event.srcElement.parentNode;
+            var box = node.getElementsByClassName("drop-down-box");
+            //If no nav open then adds visibility, background fade and nav fade in and opens the nav
+            if(open == false){
+                console.log("opening");
+                //box[0].classList.add("active-nav");
+                box[0].classList.add("opacity-nav");
+                mainElement[0].classList.add("fade-in");
+                open = true;
+            //If there is a nav open with both visibility background fade and nav fade already added these are removed and nav closed 
+            } else if(open == true && box[0].classList.length > 1){
+                console.log("closing");
+                box[0].classList.remove("active-nav");
+                box[0].classList.remove("opacity-nav");
+                mainElement[0].classList.remove("fade-in");
+                open = false;
+            //If there is a nav already open remove all added classes
+            } else {
+                for(i = 0; i < dropBox.length; i++) {
+                        console.log("removing");
+                        if (dropBox[i].classList.length != 1) {
+                            dropBox[i].classList.remove("active-nav");
+                            dropBox[i].classList.remove("opacity-nav");
+                            //mainElement[0].classList.remove("fade-in");
+                        }
+                    }
+                //Following from above the new nav option is opened with visibility and background fade added
+                console.log("switching");
+                box[0].classList.add("active-nav");
+                //mainElement[0].classList.add("fade-in");
+            }
+        }
+
+        function toggleOff(event) {
+            if(open == true){
+                //var node = event.srcElement.parentNode;
+                var box = document.getElementsByClassName("drop-down-box");
+                var mainElement = document.getElementsByClassName("dark-background");
+                // Can put a for loop here to loop through box elements an remove any instances for active-nav
+                for (var i = 0; i < box.length; i++) {
+                    if (box[i].classList.length != 1) {
+                        box[i].classList.remove("active-nav");
+                        box[i].classList.remove("opacity-nav");
+                        mainElement[0].classList.remove("fade-in");
+                        open = false;
+                    } 
+                }
+            } 
+        }
+    });
+</script>
+
+
+<div class="outer-nav">
+    <div class="d-none d-xl-flex main-nav">
+        <section class="drop-down-button">
+            <a href="#" id="study-with-us" class="drop-down-click">STUDY WITH US</a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                    <section class="col-2 offset-1">
+                            <h2>Undergraduate study</h2>
+                            <ul>
+                                <li><a href="/study/undergraduate/2017">2017 courses</a></li>
+                                <li><a href="/study/undergraduate/2016">2016 courses</a></li>
+                                <li><a href="/study/undergraduate/fees-and-scholarships">Fees and scholarships</a></li>
+                                <li><a href="/study/undergraduate/apply">How to apply</a></li>
+                                <li><a href="/study/register/ug">Register your interest</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us" tabindex="0">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <h2>Masters</h2>
+                            <ul>
+                                <li><a href="/study/masters/2017">2017 courses</a></li>
+                                <li><a href="/study/masters/2016">2016 courses</a></li>
+                                <li><a href="/study/masters/fees-and-scholarships">Fees and scholarships</a></li>
+                                <li><a href="/study/masters/apply">How to apply</a></li>
+                                <li><a href="/study/register/pg">Register your interest</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                            <h2>PhD</h2>
+                            <ul>
+                                <li><a href="#">Degrees</a></li>
+                                <li><a href="#">Guide to PhD study</a></li>
+                                <li><a href="#">Doctoral School</a></li>
+                                <li><a href="#">How to apply</a></li>
+                                <li><a href="#">Register for updates</a></li>
+                                <li><a href="#">Request our postgraduate prospectus</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <h2>Visits and Open Days</h2>
+                            <ul>
+                                <li><a href="#">Open Days and events</a></li>
+                                <li><a href="#">Campus tours</a></li>
+                                <li><a href="#">Virtual tour</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                            <h2>Fees and funding</h2>
+                            <ul>
+                                <li><a href="#">Tuition fees</a></li>
+                                <li><a href="#">Funding and scholarships</a></li>
+                                <li><a href="#">Living costs</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <h2>International students</h2>
+                            <ul>
+                                <li><a href="#">Meet us at an event</a></li>
+                                <li><a href="#">Information by country</a></li>
+                                <li><a href="#">Visiting and exchange</a></li>
+                                <li><a href="#">University preparation courses</a></li>
+                                <li><a href="#">Summer School</a></li>
+                                <li><a href="#">English language courses</a></li>
+                                <li><a href="#">Visas and immigration</a></li>
+                                <li><a href="#">Brexit information</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <h2>Student life</h2>
+                            <ul>
+                                <li><a href="#">Whats on campus</a></li>
+                                <li><a href="#">Brighton</a></li>
+                                <li><a href="#">Studying at Sussex</a></li>
+                                <li><a href="#">Student support</a></li>
+                                <li><a href="#">Accomodation</a></li>
+                                <li><a href="#">Carers</a></li>
+                                <li><a href="#">Terms and Conditions</a></li>
+                                <li><a class="show-on-focus" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="about-us"  class="drop-down-click">
+                ABOUT US
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                            <h2>About us</h2>
+                            <ul>
+                                <li><a href="#">Rankings and figures</a></li>
+                                <li><a href="#">Our structure</a></li>
+                                <li><a href="#">Strategy an funding</a></li>
+                                <li><a href="#">Jobs</a></li>
+                                <li><a href="#">Term dates</a></li>
+                                <li><a href="#">How to get here</a></li>
+                                <li><a href="#">Our campus</a></li>
+                                <li><a href="#">Creating a sustainable university</a></li>
+                                <li><a class="show-on-focus" href="#about-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <ul>
+                                <h2></h2>
+                                <li><a href="#">Sussex in the community</a></li>
+                                <li><a href="#">Teachers conferences</a></li>
+                                <li><a href="#">Improving access to higher education: widening participation</a></li>
+                                <li><a href="#">Rcruit our graduates and students</a></li>
+                                <li><a href="#">OFS transparency information</a></li>
+                                <li><a href="#">Modern Slavery Act statement</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a class="show-on-focus" href="#about-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="news-and-events" class="drop-down-click">
+                NEWS & EVENTS
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                            <h2>News</h2>
+                            <ul>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Twelve women in Academia</a></li>
+                                <li><a href="#">Quantum computing laboratory</a></li>
+                                <li><a class="show-on-focus" href="#news-and-events">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <h2>Events</h2>
+                            <ul>
+                                <li><a href="#">Graduation</a></li>
+                                <li><a href="#">The Sussex lectures</a></li>
+                                <li><a class="show-on-focus" href="#news-and-events">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                        <section class="col-2">
+                            <h2>Media Center</h2>
+                            <ul>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Press releases</a></li>
+                                <li><a href="#">Our experts</a></li>
+                                <li><a href="#">Filming guidelines</a></li>
+                                <li><a href="#">Blogs and podcasts</a></li>
+                                <li><a class="news-and-events" href="#study-with-us">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="international" class="drop-down-click">
+                INTERNATIONAL
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                            <h2>News</h2>
+                            <ul>
+                                <li><a href="#">International students</a></li>
+                                <li><a href="#">International partnerships</a></li>
+                                <li><a href="#">International research and impact</a></li>
+                                <li><a href="#">Brexit information</a></li>
+                                <li><a class="show-on-focus" href="#international">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="research" class="drop-down-click">
+                RESEARCH
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                            <h2>News</h2>
+                            <ul>
+                                <li><a href="#">Explore our research</a></li>
+                                <li><a href="#">About our research</a></li>
+                                <li><a href="#">Resaerch programmes, centres and groups</a></li>
+                                <li><a href="#">Our schools</a></li>
+                                <li><a href="#">Find a researcher</a></li>
+                                <li><a href="#">Publications</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a class="show-on-focus" href="#research">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="business" class="drop-down-click">
+                BUSINESS
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                            <h2>News</h2>
+                            <ul>
+                                <li><a href="#">Our expertise</a></li>
+                                <li><a href="#">Resaerch at Sussex</a></li>
+                                <li><a href="#">Knowledge transfer schemes</a></li>
+                                <li><a href="#">Business services</a></li>
+                                <li><a href="#">Licensing and IP</a></li>
+                                <li><a href="#">News and events</a></li>
+                                <li><a href="#">Working with the University Procurement</a></li>
+                                <li><a class="show-on-focus" href="#business">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="alumni" class="drop-down-click">
+                ALUMNI
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                            <h2>News</h2>
+                            <ul>
+                                <li><a href="#">News and events</a></li>
+                                <li><a href="#">Sussex people</a></li>
+                                <li><a href="#">Get involved</a></li>
+                                <li><a href="#">Alumni community</a></li>
+                                <li><a href="#">Global network</a></li>
+                                <li><a href="#">Support us</a></li>
+                                <li><a class="show-on-focus" href="#alumni">Back to nav headings</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="drop-down-button">
+            <a href="#" id="search" class="drop-down-click">
+                <!--Need to add the class to add the search icon here-->
+                SEARCH
+            </a>
+            <div class=drop-down-box>
+                <div class="drop-down-content">
+                    <div class="row">
+                        <section class="col-2 offset-1">
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
--->
-<!--
-<div class="justify-content-center p-0 m-0 outer-nav">
-        <div class="main-nav">
-                <ul class="nav nav-tabs nav-fill d-none d-xl-flex">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">STUDY WITH US</a>
-                    </li>
-                    <li class="nav-item dropdown position-static">
-                        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                            aria-expanded="false">DROPDOWN</a>
-                        <ul class="dropdown-menu w-100">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <li><div class="dropdown-divider"></div></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT US</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">NEWS & EVENTS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">INTERNATIONAL</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">RESEARCH</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">BUSINESS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ALUMNI</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">SEARCH</a>
-                    </li>
-                </ul>
-        </div>
-</div>
--->
